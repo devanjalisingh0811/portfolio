@@ -1,0 +1,54 @@
+version: '3.8'
+
+# Phase 3: frontend + Go backend + PostgreSQL
+# To activate: replace docker-compose.yml with this file
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - portfolio-net
+
+  backend:
+    build: ./backend
+    ports:
+      - "8081:8080"
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=${DB_NAME:-portfolio}
+      - DB_USER=${DB_USER:-portfolio}
+      - DB_PASSWORD=${DB_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - portfolio-net
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${DB_NAME:-portfolio}
+      POSTGRES_USER: ${DB_USER:-portfolio}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-portfolio}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - portfolio-net
+
+volumes:
+  pgdata:
+
+networks:
+  portfolio-net:
+    driver: bridge

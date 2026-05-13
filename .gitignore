@@ -1,0 +1,13 @@
+# env files — never commit secrets
+.env
+.env.local
+frontend/.env
+frontend/.env.local
+
+# build output
+frontend/dist/
+frontend/node_modules/
+
+# OS
+.DS_Store
+Thumbs.db

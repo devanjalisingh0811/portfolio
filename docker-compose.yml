@@ -1,0 +1,18 @@
+version: '3.8'
+
+# Phase 1: frontend only (React + Nginx)
+# Run: docker-compose up --build
+# Access: http://localhost:8080
+# ngrok: ngrok http 8080
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    networks:
+      - portfolio-net
+
+networks:
+  portfolio-net:
+    driver: bridge

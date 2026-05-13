@@ -1,0 +1,29 @@
+version: '3.8'
+
+# Phase 2: frontend + Go backend
+# To activate: replace docker-compose.yml with this file
+# Also: uncomment the /api/ proxy block in frontend/nginx.conf
+# Also: set VITE_API_BASE=/api in frontend/.env
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - portfolio-net
+
+  backend:
+    build: ./backend
+    ports:
+      - "8081:8080"
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+    networks:
+      - portfolio-net
+
+networks:
+  portfolio-net:
+    driver: bridge
