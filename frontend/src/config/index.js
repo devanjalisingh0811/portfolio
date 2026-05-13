@@ -1,11 +1,16 @@
-export const GITHUB_USERNAME = 'LondheShubham153';
+export const GITHUB_USERNAME = 'devanjalisingh0811';
 
+// Showcase repos — update this list as projects are created on GitHub.
+// Suggested DevOps projects to add (see issue #1):
+//   cicd-pipeline-demo   — GitHub Actions / Jenkins CI/CD workflow
+//   k8s-manifests        — Kubernetes Deployments, Services, Ingress, HPA
+//   terraform-infra      — Terraform IaC for AWS/GCP/Azure
+//   monitoring-stack     — Prometheus + Grafana + Alertmanager in Docker Compose
+//   go-microservice      — Go REST API with health checks and structured logging
+//   ansible-playbooks    — Ansible configuration management
+//   log-aggregation      — ELK / Loki + Grafana centralized logging
 export const FEATURED_REPOS = [
-  '90DaysOfDevOps',
-  'kubestarter',
-  'Shell-Scripting-For-DevOps',
-  'TWSThreeTierAppChallenge',
-  'kubernetes-in-one-shot',
+  'portfolio',
 ];
 
 export const SKILLS = [
@@ -25,10 +30,8 @@ export const SKILLS = [
 ];
 
 export const SOCIAL_LINKS = {
-  github:   'https://github.com/LondheShubham153',
-  linkedin: 'https://www.linkedin.com/in/shubhamlondhe1996',
-  youtube:  'https://www.youtube.com/@TrainWithShubham',
-  website:  'https://trainwithshubham.com',
+  github:   'https://github.com/devanjalisingh0811',
+  linkedin: 'https://www.linkedin.com/in/devanjalisingh0811',
 };
 
 // Phase 2: set VITE_API_BASE=/api in .env to route through Go backend
